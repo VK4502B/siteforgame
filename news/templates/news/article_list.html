@@ -1,0 +1,47 @@
+<ul>
+<head>
+    <link rel="icon" href="favicon.ico">
+    <title>{% block title %}Новини міста Дрогобич{% endblock %}</title>
+<meta charset="utf-8">
+<style type="text/css">
+    body {
+        color: #adff2f;
+    	background: url(http://html-templates.info/images/pages/140520040122.jpg)
+    }
+    A {
+    	color: #32cd32;
+    }
+    html { overflow-y: scroll }
+   .block1 { 
+    width: 200px; 
+    padding: 5px; 
+    float: left;
+    background-position: left;
+    }
+   .block2 { 
+    width: 400px; 
+    padding: 5px;  
+    float: center; 
+    position: center; 
+    } 
+</style> 
+</head>
+
+
+
+<body>
+<div class="block1">
+    <h1>Категорії:</h1>
+</div>
+<center>
+<div class="block2">
+<h1>Усі Новини</h1>
+{% for article in article_list %}
+    <p><a href="http://127.0.0.1:8000/news/{{ article.slug }}">"{{ article.headline }}"</a></p>
+    <p>Автор {{ article.reporter.full_name }}</p>
+    <p>Опубліковано {{ article.pub_date|date:"F j, Y" }} {{ article.pub_time|time:""  }}</p>
+{% endfor %}
+</div>
+</center>
+</body>
+</ul>
