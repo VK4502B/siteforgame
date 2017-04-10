@@ -2,6 +2,9 @@ from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 from unidecode import unidecode
+
+
+
 class Reporter(models.Model):
     full_name = models.CharField(max_length=70)
 

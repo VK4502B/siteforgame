@@ -7,6 +7,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', ArticleListView.as_view(), name='article-list'),
-    url(r'^(?P<slug>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail'),
+    url(r'^article/(?P<slug>[-\w]+)/$', ArticleDetailView.as_view(), name='article-detail'),
     url(r'^create/$', article_create, name='create'),
 ]
