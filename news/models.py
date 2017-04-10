@@ -22,14 +22,14 @@ class Article(models.Model):
     def __str__(self):
         return self.headline
 
-    def _get_unique_slug(self):
-        slug = slugify(self.title)
-        unique_slug = slug
-        num = 1
-        while Article.objects.filter(slug=unique_slug).exists():
-            unique_slug = '{}-{}'.format(slug, num)
-            num += 1
-        return unique_slug
+    #def _get_unique_slug(self):
+    #    slug = slugify(self.title)
+    #    unique_slug = slug
+    #    num = 1
+    #    while Article.objects.filter(slug=unique_slug).exists():
+    #        unique_slug = '{}-{}'.format(slug, num)
+    #        num += 1
+    #    return unique_slug
 
 
     def save(self):
