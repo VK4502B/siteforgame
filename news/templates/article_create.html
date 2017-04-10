@@ -26,21 +26,14 @@
     } 
 </style> 
 </head>
-
-
-
 <body>
-<div class="block1">
-    <h1>Категорії:</h1>
-</div>
 <center>
 <div class="block2">
-<h1>Усі Новини</h1>
-{% for article in article_list %}
-    <p><a href="http://127.0.0.1:8000/news/{{ article.slug }}">"{{ article.headline }}"</a></p>
-    <p>Автор {{ article.reporter.full_name }}</p>
-    <p>Опубліковано {{ article.pub_time|time:"H:i"  }} {{ article.pub_date|date:"F j, Y" }}</p>
-{% endfor %}
+    <h1>Додати новину</h1>
+<form method="POST">{% csrf_token %}
+{{  form.as_p  }}
+<input type='submit' value='Опублікувати' />
+</form>
 </div>
 </center>
 </body>

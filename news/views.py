@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.utils import timezone
-
+from django.http import HttpResponse
 from news.models import Article
+from .forms import ArticleForm
+
+
 
 class ArticleListView(ListView):
 
@@ -12,3 +15,16 @@ class ArticleListView(ListView):
         context = super(ArticleListView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()
         return context
+
+
+
+def article_create(request):
+    form = ArticleForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    context = {
+        "form": form,
+    }
+    return render(request, "article_create.html", context)
+
