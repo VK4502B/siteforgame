@@ -1,0 +1,40 @@
+<head>
+    <title>{% block title %}{{article.headline}}{% endblock %}</title>
+<style type="text/css">
+    body {
+        color: #adff2f;
+        background: url(http://html-templates.info/images/pages/140520040122.jpg)
+    }
+    A {
+        color: #ffff00;
+    }
+    h1 {
+        color:#32cd32;
+    }
+    html { overflow-y: scroll }
+   .block1 { 
+    width: 200px; 
+    padding: 5px; 
+    float: left;
+    background-position: left;
+    }
+   .block2 { 
+    width: 400px; 
+    color
+    padding: 5px;  
+    float: center; 
+    position: center; 
+    } 
+</style> 
+</head>
+<div id="a">
+    <p><a href="http://127.0.0.1:8000/news/">Головна</a>
+</div>
+<center>
+<div style="block2"
+<h1>{{ article.headline }}</h1>
+<p>{{ article.content }}</p>
+<p>{{ article.reporter }}</p>
+<p>Опубліковано {{ article.pub_time|time:"H:i"  }} {{ article.pub_date|date:"F j, Y" }}</p>
+</div>
+</center>
