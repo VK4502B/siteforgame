@@ -28,6 +28,9 @@
 </head>
 <body>
 <center>
+<div class="block1">
+<a href="{% url 'article-list' %}">Головна</a>
+</div>
 <div class="block2">
     <h1>Додати новину</h1>
 <form method="POST">{% csrf_token %}
