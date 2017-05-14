@@ -2,6 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.utils.text import slugify
 from unidecode import unidecode
+from django.core.urlresolvers import reverse
 
 
 
@@ -14,6 +15,11 @@ class Reporter(models.Model):
 class Article(models.Model):
     headline = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True)
+    image = models.ImageField(blank=True, null=True,
+        height_field='height_field',
+        width_field='width_field')
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
     content = models.TextField()
     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE, null=True)
     pub_date = models.DateField('date published', default=datetime.now)
@@ -36,9 +42,11 @@ class Article(models.Model):
 
 
     def save(self):
-        if not self.slug:
-            self.slug = slugify(unidecode(self.headline))
+        self.slug = slugify(unidecode(self.headline))
         super(Article, self).save()
+
+    def get_absolute_url(self):
+        return reverse('news:article_detail', kwargs={"slug": self.slug})
 
     def __unicode__(self):
         return self.headline

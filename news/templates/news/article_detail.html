@@ -28,13 +28,18 @@
 </style> 
 </head>
 <div id="a">
-    <p><a href="{% url 'article-list' %}">Головна</a>
+    <p><a href="{% url 'news:article_list' %}">Головна</a>
 </div>
+{% load staticfiles %}
 <center>
-<div style="block2"
+<div style="block2">
 <h1>{{ article.headline }}</h1>
+{% if article.image %}
+<img src='{{ article.image.url }}' class='img-responsive' />
+{% endif %}
 <p>{{ article.content }}</p>
 <p>{{ article.reporter }}</p>
 <p>Опубліковано {{ article.pub_time|time:"H:i"  }} {{ article.pub_date|date:"F j, Y" }}</p>
+<p><a href="{% url 'news:update' slug=article.slug %}">Редагувати</a></p>
 </div>
 </center>

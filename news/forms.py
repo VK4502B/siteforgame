@@ -10,5 +10,6 @@ class ArticleForm(forms.ModelForm):
     fields = [
     "headline",
     "content",
-    "reporter"
+    "image",
+    "reporter",
     ]

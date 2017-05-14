@@ -31,7 +31,7 @@
 <a href="{% url 'news:article_list' %}">Головна</a>
 </div>
 <div class="block2">
-    <h1>Додати новину</h1>
+    <h1>Редагувати</h1>
 <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
 {{  form.as_p  }}
 <input type='submit' value='Опублікувати' />
